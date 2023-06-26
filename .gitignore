@@ -2,3 +2,7 @@
 Azure/environments/**/.terraform*
 Azure/environments/**/terraform.tf*
 
+*/.terraform/*
+.envrc
+*.plan
+terraform.tfstate

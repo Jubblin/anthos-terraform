@@ -134,3 +134,59 @@ If you would like to test out the Anthos Configuration and Policy Management fea
    ```bash
    terraform destroy
    ```
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | >= 4.5.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_random"></a> [random](#provider\_random) | 3.5.1 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | 4.0.4 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_aad_app"></a> [aad\_app](#module\_aad\_app) | ./modules/aad-app | n/a |
+| <a name="module_anthos_cluster"></a> [anthos\_cluster](#module\_anthos\_cluster) | ./modules/anthos_cluster | n/a |
+| <a name="module_cluster_rg"></a> [cluster\_rg](#module\_cluster\_rg) | ./modules/cluster-rg | n/a |
+| <a name="module_cluster_vnet"></a> [cluster\_vnet](#module\_cluster\_vnet) | ./modules/cluster-vnet | n/a |
+| <a name="module_create_vars"></a> [create\_vars](#module\_create\_vars) | terraform-google-modules/gcloud/google | n/a |
+| <a name="module_gcp_data"></a> [gcp\_data](#module\_gcp\_data) | ./modules/gcp_data | n/a |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [random_string.suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [tls_private_key.anthos_ssh_key](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_admin_user"></a> [admin\_user](#input\_admin\_user) | GCP User to give admin RBAC to in the cluster | `string` | n/a | yes |
+| <a name="input_azure_region"></a> [azure\_region](#input\_azure\_region) | Azure region to deploy to | `string` | n/a | yes |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | GKE version to install | `string` | n/a | yes |
+| <a name="input_gcp_location"></a> [gcp\_location](#input\_gcp\_location) | GCP region to deploy the multi-cloud API | `string` | n/a | yes |
+| <a name="input_gcp_project_id"></a> [gcp\_project\_id](#input\_gcp\_project\_id) | GCP project ID to register the Anthos Cluster to | `string` | n/a | yes |
+| <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | prefix of all artifacts created and cluster name | `string` | n/a | yes |
+| <a name="input_node_pool_instance_type"></a> [node\_pool\_instance\_type](#input\_node\_pool\_instance\_type) | Azure instance type for node pool | `string` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | The automatically generated name of your Azure GKE cluster |
+| <a name="output_cluster_resource_group"></a> [cluster\_resource\_group](#output\_cluster\_resource\_group) | VNET Resource Group |
+| <a name="output_message"></a> [message](#output\_message) | Connect Instructions |
+| <a name="output_vars_file"></a> [vars\_file](#output\_vars\_file) | The variables needed to create more node pools are in the vars.sh file.<br> If you create additional node pools they must be manually deleted before you run terraform destroy |
+| <a name="output_vnet_resource_group"></a> [vnet\_resource\_group](#output\_vnet\_resource\_group) | VNET Resource Group |
+<!-- END_TF_DOCS -->
